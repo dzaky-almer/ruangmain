@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+
+@theme {
+    --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+    --font-script: 'Caveat', cursive;
+    --color-paper: #fff9f0;
+    --color-paper-2: #fff1dc;
+    --color-ink: #252525;
+    --color-ink-2: #6b6865;
+    --color-sun: #ffd84d;
+    --color-sky: #69a7ff;
+    --color-bubble: #ff91b8;
+    --color-mint: #96d9a0;
+    --color-ok: #15803d;
+    --color-warn: #b45309;
+    --color-bad: #b91c1c;
+    --color-info: #1d4ed8;
+    --color-danger: #fec8ca;
+    --color-grape: #a78bfa;
+}
+
+/* Mobile: turunkan satu tingkat skala teks supaya tidak ada elemen yang kegedean di 390px. */
+@media (max-width: 639.98px) {
+    :root {
+        --text-lg: 1rem;
+        --text-xl: 1.125rem;
+        --text-2xl: 1.25rem;
+        --text-3xl: 1.5rem;
+        --text-4xl: 1.75rem;
+        --text-5xl: 2.25rem;
+        --text-6xl: 2.75rem;
+        --text-7xl: 3rem;
+        --text-8xl: 3.5rem;
+        --text-9xl: 4rem;
+    }
+}
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    * {
+        scrollbar-width: none;
+    }
+
+    ::-webkit-scrollbar {
+        display: none;
+    }
+
+    a,
+    button,
+    input,
+    select,
+    textarea,
+    summary,
+    [role='button'] {
+        transition:
+            background-color 200ms ease,
+            border-color 200ms ease,
+            color 200ms ease,
+            box-shadow 200ms ease,
+            transform 200ms ease,
+            opacity 200ms ease;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        html {
+            scroll-behavior: auto;
+        }
+
+        a,
+        button,
+        input,
+        select,
+        textarea,
+        summary,
+        [role='button'] {
+            transition-duration: 0ms;
+        }
+    }
+}
+
+@layer components {
+    .btn-sketch,
+    .btn-primary,
+    .btn-secondary,
+    .btn-danger {
+        @apply inline-flex min-h-11 items-center justify-center rounded-full border-2 border-ink px-5 py-2.5 text-sm font-bold text-ink shadow-[2px_4px_0_#252525] translate-x-0 translate-y-0 transition-[translate,box-shadow] duration-200 ease-out hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-[0px_2px_0_#252525] active:translate-x-1 active:translate-y-1 active:shadow-[0px_0px_0_#252525] focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-info;
+    }
+
+    .btn-primary { @apply bg-sun; }
+    .btn-secondary { @apply bg-white; }
+    .btn-danger { @apply bg-danger text-bad; }
+
+    .card-paper {
+        @apply rounded-[22px] border-2 border-ink bg-white shadow-[4px_4px_0_#252525];
+    }
+
+    .card-soft {
+        @apply rounded-[18px] border border-ink/15 bg-white;
+    }
+
+    .field-sketch {
+        @apply mt-2 block min-h-11 w-full rounded-xl border-2 border-[#d5d0c8] bg-white px-3 py-2.5 text-sm text-ink outline-none placeholder:text-ink-2/70 focus:border-ink focus:ring-3 focus:ring-info/25;
+    }
+
+    .label-sketch { @apply block text-sm font-bold text-ink; }
+
+    .chip-status,
+    .chip-aktif,
+    .chip-nonaktif { @apply inline-flex items-center rounded-full border px-2.5 py-1 text-xs font-bold; }
+    .chip-aktif { @apply border-ok text-ok; }
+    .chip-nonaktif { @apply border-bad text-bad; }
+
+    .alert-info { @apply text-sm text-info; }
+    .alert-success { @apply text-sm text-ok; }
+    .alert-warning { @apply text-sm text-warn; }
+    .alert-error { @apply text-sm text-bad; }
+}
